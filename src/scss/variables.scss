@@ -16,24 +16,33 @@
 // 2. Colors
 $primary-color: #1E90FF;
 $secondary-color: #4BA6FF;
-$neutral-white: white;
-$neutral-black: black;
+$neutral-white: #ffffff;
+$neutral-black: #000000;
 $neutral-gray: #373737;
+$neutral-suva-grey: #8D8D8D;
+$ghost-white: #FDFDFD;
+$color-platinum: #E7E7E7;
+$color-gainsboro: #d8d8d8;
 
-$flash-pink: #F7F3F7;
+$color-blossom-pink: #CE9BBE;
+$color-pink: #F7F3F7;
+$dark-pink: #F7EEF7;
 
 $light-pink: #E9E3E9;
 $light-pink-gray: #DFDCDF;
 
 
 // 3. Fonts
-$font-title-nn: 10px;
-$font-title-sm: 14px;
-$font-title-md: 18px;
-$font-title-lg: 22px;
-$font-title-xl: 26px;
+$font-title-nn: 0.625em; // 10px;
+$font-title-sm: 0.857em; // 14px;
+$font-title-md: 1.125em; // 18px;
+$font-title-lg: 1.375em; // 22px;
+$font-title-xl: 1.5em;  // 24px;
+$font-title-xxl: 1.5em;  // 24px;
 
-$font-text-sm: 12px;
+$font-text-xs: 0.75em; //12px
+$font-text-sm: 0.875em; //14px
+$font-text-md: 1em; //16px
 
 
 // 4. Spaces
@@ -41,36 +50,44 @@ $font-text-sm: 12px;
 // margin left | right
 $space-inline-nn: 0.25em;  //  4px
 $space-inline-xs: 0.5em;   //  8px
-$space-inline-sm: 0.625em; // 10px
+$space-inline-sm: 0.75em; // 10px
 $space-inline-md: 0.875em; // 14px
 $space-inline-lg: 1.125em; // 18px
 $space-inline-xl: 1.25em;  // 20px
+$space-inline-xxl: 1.5em;  // 24px
 
 
 // margin top | bottom
 $space-stack-nn: 0.25em;  //  4px
 $space-stack-xs: 0.5em;   //  8px
-$space-stack-sm: 0.625em; // 10px
+$space-stack-sm: 0.75em; // 10px
 $space-stack-md: 0.875em; // 14px
 $space-stack-lg: 1.125em; // 18px
 $space-stack-xl: 1.25em;  // 20px
+$space-stack-xxl: 1.5em;  // 24px
 
 
 // Padding
 $space-inset-nn: 0.25em;  //  4px
 $space-inset-xs: 0.5em;   //  8px
-$space-inset-sm: 0.625em; // 10px
+$space-inset-sm: 0.75em; // 10px
 $space-inset-md: 0.875em; // 14px
 $space-inset-lg: 1.125em; // 18px
 $space-inset-xl: 1.25em;  // 20px
+$space-inset-xxl: 1.5em;  // 24px
 
 
-// radius
-// $space-inset-nn: 0.25em;  //  4px
-// $space-inset-xs: 0.5em;   //  8px
-// $space-inset-sm: 0.625em; // 10px
-// $space-inset-md: 0.875em; // 14px
-// $space-inset-lg: 1.125em; // 18px
-// $space-inset-xl: 1.25em;  // 20px
+
+// Border
+
+// border-radius
+$border-radius-nn: 0.25em;  //  4px
+$border-radius-xs: 0.5em;   //  8px
+$border-radius-sm: 0.75em; // 10px
+$border-radius-md: 0.875em; // 14px
+$border-radius-lg: 1.125em; // 18px
+$border-radius-xl: 1.25em;  // 20px
+$border-radius-xxl: 1.5em;  // 24px
+
 
 

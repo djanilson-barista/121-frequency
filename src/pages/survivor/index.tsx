@@ -16,7 +16,7 @@ const Survivor = () => {
         </div>
 
         <div className="survivor__analytics">
-          <Card className="survivor__analytics__rank survivor__analytics__card">
+          <Card className="survivor__analytics__recent survivor__analytics__card">
             content
           </Card>
           <Card className="survivor__analytics__picker survivor__analytics__card">

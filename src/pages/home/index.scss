@@ -1,0 +1,15 @@
+@import '~scss/variables.scss';
+@import '~scss/presets.scss';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: $color-pink;
+
+  .app-page {
+    background-color: $color-pink;
+  }
+}
+

@@ -3,41 +3,265 @@
 .survivor {
   padding: $space-inset-xl $space-inset-xl 0;
   flex: 1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
 
-  &__list {
-    flex: 1;
-    margin: $space-stack-xl $space-inline-xl 0;
 
-    &__card {
-      border-radius: 1em;
-      border-bottom-left-radius: 0 ;
-      border-bottom-right-radius: 0 ;
+
+  &__card {
+    box-shadow: 0 0 6px 2px #dddddd44;
+
+    &__title {
+      color: $secondary-color;
+      font-size: $font-title-xl;
+    }
+
+    &__title__add {
+      color: $neutral-white;
+      background-color: $secondary-color;
+      padding: $space-inset-nn;
+      display: flex;
+      line-height: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+      border-radius: $space-inset-xs;
+      border: 0;
+      background: linear-gradient($primary-color, $secondary-color);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $neutral-white;
+        background: linear-gradient($primary-color, $secondary-color);
+        box-shadow: 0 4px 8px 2px #{$primary-color}40;
+      }
     }
   }
 
-  &__analytics {
-    flex: 1;
+  &__list {
     display: flex;
+    align-items: stretch;
     margin: $space-stack-xl $space-inline-xl 0;
 
     &__card {
       flex: 1;
       border-radius: 1em;
-      margin: $space-stack-sm $space-inline-xl $space-stack-sm;
-
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
-    &__rank {
+    & table thead th {
+      background-color: transparent;
+
+      & .ant-table-column-sorters {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__row {
+      & .row__content__actions {
+        visibility: hidden;
+      }
+
+      &:hover .row__content__actions {
+        visibility: visible;
+      }
+
+      & > td {
+        &:first-child {
+          border-radius: 0em;
+          border-top-left-radius: 0.5em;
+          border-bottom-left-radius: 0.5em;
+        }
+        &:last-child {
+          border-radius: 0em;
+          border-top-right-radius: 0.5em;
+          border-bottom-right-radius: 0.5em;
+        }
+      }
+      &:hover > td {
+        background-color: $dark-pink !important;
+        font-weight: bolder;
+        color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__analytics {
+    display: flex;
+    flex-direction: column;
+    margin: $space-stack-xl $space-inline-xl 0;
+
+    &__card {
+      flex: 1;
+      border-radius: $border-radius-lg;
+      margin: $space-stack-sm $space-inline-xl $space-stack-sm;
+    }
+
+    &__recent {
       margin-top: 0;
+
+      & .ant-card-body {
+        display: flex;
+      }
+
+      &__list {
+        flex: 1;
+
+        &:first-child {
+          margin-right: $space-inline-sm;
+        }
+
+        &:last-child {
+          margin-left: $space-inline-sm;
+        }
+
+        & > .sys__list {
+          margin-top: $space-stack-lg;
+          padding: $space-inset-xs;
+          border-radius: $border-radius-sm;
+          background-color: $color-pink;
+
+          & .ant-list-item {
+            background: $neutral-white;
+            border-radius: $border-radius-sm;
+            padding: $space-inset-md $space-inset-xl;
+            margin: 0;
+            border: 1px solid transparent;
+            margin-bottom: $space-stack-nn;
+            line-height: 100%;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            &:hover {
+              border: 1px solid $primary-color;
+            }
+          }
+        }
+      }
     }
 
     &__picker {
       margin-bottom: 0;
-      border-bottom-left-radius: 0 ;
-      border-bottom-right-radius: 0 ;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background: linear-gradient($primary-color, $secondary-color);
+
+      &:before,
+      &:after {
+        content: '';
+        opacity: 0.4;
+        position: absolute;
+      }
+
+      &::before {
+        display: block;
+        height: 100%;
+        width: 1px;
+        left: 50%;
+        z-index: 1;
+        background: $neutral-white;
+      }
+
+      &__section {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &__title {
+          color: $neutral-white;
+          font-size: $font-title-xl;
+          font-weight: bolder;
+        }
+
+        &__player {
+          color: $neutral-white;
+          display: flex;
+          margin-top: $space-stack-lg;
+
+          &__avatar__container {
+            padding: $space-inline-nn;
+            border: #{$border-radius-nn / 1.5} dashed #{$neutral-white}77;
+            border-radius: 100%;
+
+            &.less {
+              border-color: transparent;
+            }
+          }
+
+          &__avatar {
+            background-color: $neutral-white;
+            position: relative;
+            border: 1px solid #{$primary-color};
+            box-shadow: 0 0 8px 10px #{$secondary-color}55;
+            width: 10rem;
+            height: 10rem;
+          }
+
+          &__percent {
+            height: $space-stack-xl;
+            width: 2.5em;
+            font-weight: 900;
+            font-size: $font-title-lg;
+            display: inline-block;
+            padding-bottom: calc(#{$space-stack-xl} + 4px);
+            border-bottom: 1px solid $neutral-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .survivor {
+    display: grid;
+    grid-template-columns: 100%;
+    flex: 1;
+    padding-right: 0;
+    padding-left: 0;
+
+    &__analytics {
+      margin-left: 0;
+      margin-right: 0;
+
+      &__rank {
+        margin-top: 0;
+
+        & .ant-card-body {
+          flex-direction: column;
+        }
+
+        &__list {
+          margin-top: $space-stack-sm;
+
+          &:first-child
+          , &:last-child {
+            margin-right: 0;
+            margin-left: 0;
+          }
+
+        }
+
+      }
+
+      &__picker {
+        font-size: 0.6em;
+
+        &__section__player__avatar {
+          height: 5.5rem;
+          width: 5.5rem;
+        }
+      }
     }
   }
 
-
 }
+
