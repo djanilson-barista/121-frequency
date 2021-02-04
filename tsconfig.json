@@ -1,5 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": [
+        "./components/*"
+      ],
+      "pages/*": [
+        "./pages/*"
+      ],
+      "assets/*": [
+        "./assets/*"
+      ],
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -21,6 +33,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "prettier.config.js"
   ]
 }

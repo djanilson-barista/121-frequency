@@ -1,0 +1,42 @@
+@import '~scss/variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: $space-inset-sm;
+  padding-left: #{$space-inset-sm * 2};
+  padding-right: #{$space-inset-sm * 2};
+  align-items: center;
+
+  background-color: $primary-color;
+  background: linear-gradient(90deg, $primary-color 0%, $secondary-color 100%);
+
+  &__title {
+    display: flex;
+    align-items: center;
+
+    & h1 {
+      color: $neutral-white;
+    }
+  }
+
+  &__logo {
+    height: 40px;
+    margin: 0 #{$space-inset-sm * 2};
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+
+    &__name {
+      color: $neutral-white;
+    }
+
+    &__avatar {
+      background-color: $neutral-white;
+      color: $neutral-black;
+      margin-left: $space-inline-nn;
+    }
+  }
+}

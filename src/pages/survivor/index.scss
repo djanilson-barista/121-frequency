@@ -1,0 +1,43 @@
+@import '~scss/variables.scss';
+
+.survivor {
+  padding: $space-inset-xl $space-inset-xl 0;
+  flex: 1;
+  display: flex;
+
+  &__list {
+    flex: 1;
+    margin: $space-stack-xl $space-inline-xl 0;
+
+    &__card {
+      border-radius: 1em;
+      border-bottom-left-radius: 0 ;
+      border-bottom-right-radius: 0 ;
+    }
+  }
+
+  &__analytics {
+    flex: 1;
+    display: flex;
+    margin: $space-stack-xl $space-inline-xl 0;
+
+    &__card {
+      flex: 1;
+      border-radius: 1em;
+      margin: $space-stack-sm $space-inline-xl $space-stack-sm;
+
+    }
+
+    &__rank {
+      margin-top: 0;
+    }
+
+    &__picker {
+      margin-bottom: 0;
+      border-bottom-left-radius: 0 ;
+      border-bottom-right-radius: 0 ;
+    }
+  }
+
+
+}

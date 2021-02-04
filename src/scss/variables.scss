@@ -1,0 +1,76 @@
+// TOC
+// - Units guide
+// - Colors
+// - Fonts
+// - Spaces
+
+// 1. Units
+// # nn -  4px - nano
+// # xs -  8px - extra small
+// # sm - 10px - small
+// # md - 14px - medium
+// # lg - 18px - large
+// # xl - 20px - extra large
+
+
+// 2. Colors
+$primary-color: #1E90FF;
+$secondary-color: #4BA6FF;
+$neutral-white: white;
+$neutral-black: black;
+$neutral-gray: #373737;
+
+$flash-pink: #F7F3F7;
+
+$light-pink: #E9E3E9;
+$light-pink-gray: #DFDCDF;
+
+
+// 3. Fonts
+$font-title-nn: 10px;
+$font-title-sm: 14px;
+$font-title-md: 18px;
+$font-title-lg: 22px;
+$font-title-xl: 26px;
+
+$font-text-sm: 12px;
+
+
+// 4. Spaces
+
+// margin left | right
+$space-inline-nn: 0.25em;  //  4px
+$space-inline-xs: 0.5em;   //  8px
+$space-inline-sm: 0.625em; // 10px
+$space-inline-md: 0.875em; // 14px
+$space-inline-lg: 1.125em; // 18px
+$space-inline-xl: 1.25em;  // 20px
+
+
+// margin top | bottom
+$space-stack-nn: 0.25em;  //  4px
+$space-stack-xs: 0.5em;   //  8px
+$space-stack-sm: 0.625em; // 10px
+$space-stack-md: 0.875em; // 14px
+$space-stack-lg: 1.125em; // 18px
+$space-stack-xl: 1.25em;  // 20px
+
+
+// Padding
+$space-inset-nn: 0.25em;  //  4px
+$space-inset-xs: 0.5em;   //  8px
+$space-inset-sm: 0.625em; // 10px
+$space-inset-md: 0.875em; // 14px
+$space-inset-lg: 1.125em; // 18px
+$space-inset-xl: 1.25em;  // 20px
+
+
+// radius
+// $space-inset-nn: 0.25em;  //  4px
+// $space-inset-xs: 0.5em;   //  8px
+// $space-inset-sm: 0.625em; // 10px
+// $space-inset-md: 0.875em; // 14px
+// $space-inset-lg: 1.125em; // 18px
+// $space-inset-xl: 1.25em;  // 20px
+
+
