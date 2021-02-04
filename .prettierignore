@@ -1,0 +1,4 @@
+tsconfig.*
+.eslintrc.*
+/.scripts/*
+/.config/*
