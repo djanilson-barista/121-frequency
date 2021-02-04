@@ -151,7 +151,11 @@
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       background: linear-gradient($primary-color, $secondary-color);
-
+      & .ant-card-body {
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
       &:before,
       &:after {
         content: '';
@@ -169,7 +173,7 @@
       }
 
       &__section {
-        flex: 1 1 auto;
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -181,7 +185,7 @@
           font-weight: bolder;
         }
 
-        &__player {
+        &__segmentation {
           color: $neutral-white;
           display: flex;
           margin-top: $space-stack-lg;
@@ -190,10 +194,6 @@
             padding: $space-inline-nn;
             border: #{$border-radius-nn / 1.5} dashed #{$neutral-white}77;
             border-radius: 100%;
-
-            &.less {
-              border-color: transparent;
-            }
           }
 
           &__avatar {
@@ -205,15 +205,15 @@
             height: 10rem;
           }
 
-          &__percent {
-            height: $space-stack-xl;
-            width: 2.5em;
-            font-weight: 900;
-            font-size: $font-title-lg;
-            display: inline-block;
-            padding-bottom: calc(#{$space-stack-xl} + 4px);
-            border-bottom: 1px solid $neutral-white;
-          }
+        //   &__percent {
+        //     height: $space-stack-xl;
+        //     width: 2.5em;
+        //     font-weight: 900;
+        //     font-size: $font-title-lg;
+        //     display: inline-block;
+        //     padding-bottom: calc(#{$space-stack-xl} + 4px);
+        //     border-bottom: 1px solid $neutral-white;
+        //   }
         }
       }
     }
@@ -255,13 +255,12 @@
       &__picker {
         font-size: 0.6em;
 
-        &__section__player__avatar {
+        &__section__segmentation__avatar {
           height: 5.5rem;
           width: 5.5rem;
         }
       }
     }
   }
-
 }
 
