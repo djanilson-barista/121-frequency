@@ -1,0 +1,9 @@
+.sys__list {
+  &__item {
+    cursor: pointer;
+
+    &:nth-child(odd) {
+      background: #00000005;
+    }
+  }
+}
