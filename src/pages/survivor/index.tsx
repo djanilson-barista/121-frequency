@@ -1,14 +1,19 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { Card, Avatar, Button } from 'antd';
+import { Link } from 'react-router-dom';
 
-import healthyIco from 'assets/icons/heart.png';
-import infectedIco from 'assets/icons/biohazard.png';
 import Table from 'components/table';
 
 import './index.scss';
+import healthyIco from 'assets/icons/heart.png';
+import infectedIco from 'assets/icons/biohazard.png';
 
-import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
 import { AddIcon } from 'components/Icons';
+import { SurvivorActions } from 'stores/survivors';
+import { AppState } from 'stores';
+import List from 'components/list';
 
 class Survivor extends Component {
   render() {
@@ -34,11 +39,13 @@ class Survivor extends Component {
           <div className="survivor__analytics">
             <Card
               title={
-                <span className="survivor__card__title">Last registered</span>
+                <span className="survivor__card__title">
+                  Latest Registrations
+                </span>
               }
               className="survivor__analytics__recent survivor__analytics__card"
             >
-              content
+              <List />
             </Card>
             <Card className="survivor__analytics__picker survivor__analytics__card">
               <div className="survivor__analytics__picker__section most__picked">
@@ -81,4 +88,11 @@ class Survivor extends Component {
   }
 }
 
-export default Survivor;
+const mapStateToProps = (state: AppState) => ({
+  survivors: state.survivorState,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(SurvivorActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survivor);

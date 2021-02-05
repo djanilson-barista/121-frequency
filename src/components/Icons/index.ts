@@ -3,5 +3,6 @@ import DeleteIcon from 'mdi-react/DeleteIcon';
 import EditIcon from 'mdi-react/EditIcon';
 import ShareIcon from 'mdi-react/ShareIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
+import EyeIcon from 'mdi-react/EyeIcon';
 
-export { AddIcon, DeleteIcon, EditIcon, ShareIcon, CloseIcon };
+export { AddIcon, DeleteIcon, EditIcon, ShareIcon, CloseIcon, EyeIcon };

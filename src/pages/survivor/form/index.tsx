@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import {
   Card,
   Form,
@@ -17,23 +19,15 @@ import { CloseIcon } from 'components/Icons';
 
 import { uuid } from 'utils';
 import './index.scss';
+import { SurvivorActions } from 'stores/survivors';
+import { AppState } from 'stores';
+import { Survivor } from 'stores/survivors/types';
 
-interface FormFields {
-  id?: string;
-  name: string;
-  description: string;
-  age: number;
-  bloodType: string;
-  tags: Array<any>;
-  infected: boolean;
-  injured: boolean;
-  canWork: boolean;
-}
-const SurvivorForm = (props: any) => {
+const _SurvivorForm = (props: any) => {
   const { Option } = Select;
   const { TextArea } = Input;
 
-  const initialStateForm: FormFields = {
+  const initialStateForm: Survivor = {
     name: '',
     description: '',
     age: 0,
@@ -48,7 +42,7 @@ const SurvivorForm = (props: any) => {
 
   const history = useHistory();
 
-  const [form, setForm] = useState<FormFields>(
+  const [form, setForm] = useState<Survivor>(
     Object.keys(props.editingSurvivor || {}).length
       ? props.editingSurvivor
       : initialStateForm,
@@ -307,4 +301,17 @@ const SurvivorForm = (props: any) => {
   );
 };
 
-export default SurvivorForm;
+const mapStateToProps = (state: AppState) => ({
+  survivors: state.survivorState,
+  editingSurvivor: state.survivorState.editingSurvivor,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators({ ...SurvivorActions }, dispatch);
+
+const FormSurvivor = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(_SurvivorForm);
+
+export default FormSurvivor;

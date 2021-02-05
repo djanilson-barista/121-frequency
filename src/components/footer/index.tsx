@@ -3,7 +3,7 @@ import './footer.scss';
 const Footer = () => {
   return (
     <div className="footer">
-      <p>Stay healthy and alive!</p>
+      <p>Stay on that frequency, Stay healthy and alive!</p>
     </div>
   );
 };

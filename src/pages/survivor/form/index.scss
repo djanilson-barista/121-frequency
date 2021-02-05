@@ -78,7 +78,7 @@
 
     &__description {
       & textarea#description {
-        height: 14em;
+        height: 5em;
       }
     }
 
@@ -117,8 +117,8 @@
 
     &__submit {
       width: 100%;
-      background: linear-gradient($primary-color, $secondary-color);
-      box-shadow: 0 4px 19px 0px #{$primary-color}55;
+      background: linear-gradient($secondary-color, $primary-color);
+      box-shadow: 0 4px 7px 1px #{$primary-color}55;
 
       &:hover,
       &:active,

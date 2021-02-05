@@ -1,6 +1,8 @@
 .sys__list {
   &__item {
     cursor: pointer;
+    padding-right: 1em;
+    padding-left: 1em;
 
     &:nth-child(odd) {
       background: #00000005;
