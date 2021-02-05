@@ -41,7 +41,7 @@ const List = (props: any) => {
     <AntList
       {...props}
       className="sys__list"
-      dataSource={makeDataList((props.dataSource || []).slice(-5))}
+      dataSource={makeDataList((props.dataSource || []).slice(-5).reverse())}
       renderItem={(item: ListItem) => listItem(item)}
     />
   );
