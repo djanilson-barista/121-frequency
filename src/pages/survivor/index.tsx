@@ -3,8 +3,6 @@ import { Card, Avatar, Button } from 'antd';
 import healthyIco from 'assets/icons/heart.png';
 import infectedIco from 'assets/icons/biohazard.png';
 import Table from 'components/table';
-import Header from 'components/header';
-import Footer from 'components/footer';
 
 import './index.scss';
 

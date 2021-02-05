@@ -1,0 +1,189 @@
+@import '~scss/variables.scss';
+
+.survivor__form  {
+  padding: $space-inset-xl $space-inset-xl 0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 100%;
+
+  &__card {
+    box-shadow: 0 0 6px 2px #dddddd44;
+    flex: 1;
+    border-radius: 1em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &__title {
+      color: $secondary-color;
+      font-size: $font-title-xl;
+    }
+
+    &__title__close {
+      color: $neutral-suva-grey;
+      margin: 0;
+      padding: 0;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $neutral-black;
+      }
+    }
+  }
+
+  &__container {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    margin: $space-stack-xl $space-inline-xl 0;
+
+  }
+
+  &__form {
+    padding-right: 10em;
+    padding-left: 10em;
+
+    & label {
+      &:not(.ant-radio-wrapper) {
+        font-weight: bold;
+      }
+    }
+
+    label .ant-radio-checked ~ span {
+      color: $primary-color;
+    }
+
+    &__title {
+      display: block;
+      text-align: center;
+      color: $neutral-suva-grey;
+      text-transform: uppercase;
+      font-size: $font-text-sm;
+      font-weight: bolder;
+      padding-bottom: calc(#{$space-stack-xl} * 2);
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 50% 50%;
+
+      &.save-button {
+        grid-template-columns: 100%;
+      }
+
+      &:first-child {
+        margin-bottom: $space-inset-lg;
+      }
+    }
+
+    &__description {
+      & textarea#description {
+        height: 14em;
+      }
+    }
+
+    &__players {
+      list-style: none;
+      margin: 0;
+      margin-top: $space-stack-lg;
+      padding: 0;
+      padding-bottom: $space-stack-md;
+      border-bottom: 1px solid $color-gainsboro;
+      max-height: 35em;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      & li {
+        border: 0;
+        border: 2px dashed #{$color-platinum}22;
+        padding: $space-inset-lg;
+        border-radius: $border-radius-xs;
+        // background-color: $ghost-white;
+        background: linear-gradient($ghost-white 30%, $color-platinum 100%);
+        cursor: pointer;
+        margin: $space-stack-nn 0;
+
+        &:hover {
+          border-color: $color-gainsboro;
+        }
+
+        & span {
+          color: $primary-color;
+          margin-left: $space-inset-xs;
+          font-size: $font-text-md;
+        }
+      }
+    }
+
+    &__submit {
+      width: 100%;
+      background: linear-gradient($primary-color, $secondary-color);
+      box-shadow: 0 4px 19px 0px #{$primary-color}55;
+
+      &:hover,
+      &:active,
+      &:focus,
+      &:visited {
+        background: linear-gradient($primary-color, $secondary-color);
+      }
+    }
+  }
+
+  &__tag {
+    background-color: $primary-color;
+    border-radius: 1em;
+    color: $neutral-white;
+    padding: $space-stack-nn $space-inline-xs;
+    min-width: 5em;
+    display: flex;
+    align-items: center;
+
+    &__text {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      margin: 0;
+      box-sizing: border-box;
+      padding: 0;
+      margin-left: 0.5em;
+      font-weight: 500;
+    }
+
+    svg {
+      color: $neutral-white;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .survivor__form {
+    &__form {
+      padding-right: 0em;
+      padding-left: 0em;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .survivor__form {
+    padding: 0;
+    &__form {
+      padding-right: 0em;
+      padding-left: 0em;
+
+      &__row {
+        grid-template-columns: 100%;
+
+        & .ant-col {
+          margin-top: 1em;
+        }
+
+
+        &.save-button {
+          grid-template-columns: 100%;
+        }
+      }
+    }
+  }
+}
