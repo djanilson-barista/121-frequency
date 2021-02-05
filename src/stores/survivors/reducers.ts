@@ -19,6 +19,13 @@ const getPercent = (data: Survivor[]) => {
   const size = data.length;
   const sizeHealthy = data.filter(item => !item.infected).length;
 
+  if (!size) {
+    return {
+      healthy: 0,
+      infected: 0,
+    };
+  }
+
   return {
     healthy: ((sizeHealthy * 100) / size).toFixed(2),
     infected: (100 - (sizeHealthy * 100) / size).toFixed(2),

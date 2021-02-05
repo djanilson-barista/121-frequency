@@ -1,3 +1,4 @@
+import { mockData } from 'mock-data';
 import { all, put, takeEvery } from 'redux-saga/effects';
 import { localStorageAPI } from 'stores/api';
 import {
@@ -39,6 +40,13 @@ export function* create({ payload }: any) {
  */
 export function* fetch() {
   const survivors = yield localStorageAPI.getItem('survivors');
+
+  if (survivors.length === 0) {
+    setSurvivors(mockData as Survivor[]);
+    return yield put(fetchSurvivor(mockData));
+  }
+
+  console.log('ss');
 
   return yield put(fetchSurvivor(survivors));
 }
