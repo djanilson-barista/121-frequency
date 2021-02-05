@@ -6,8 +6,6 @@
   display: grid;
   grid-template-columns: 50% 50%;
 
-
-
   &__card {
     box-shadow: 0 0 6px 2px #dddddd44;
 
@@ -172,6 +170,20 @@
         background: $neutral-white;
       }
 
+      &::after {
+        content: 'survivors';
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        border-radius: 4px;
+        padding: 0.2rem 1rem;
+        color: $neutral-white;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: $font-text-sm;
+        border: 1px dashed $neutral-white;
+      }
+
       &__section {
         flex: 1;
         display: flex;
@@ -189,6 +201,7 @@
           color: $neutral-white;
           display: flex;
           margin-top: $space-stack-lg;
+          position: relative;
 
           &__avatar__container {
             padding: $space-inline-nn;
@@ -205,15 +218,13 @@
             height: 10rem;
           }
 
-        //   &__percent {
-        //     height: $space-stack-xl;
-        //     width: 2.5em;
-        //     font-weight: 900;
-        //     font-size: $font-title-lg;
-        //     display: inline-block;
-        //     padding-bottom: calc(#{$space-stack-xl} + 4px);
-        //     border-bottom: 1px solid $neutral-white;
-        //   }
+          &__percent {
+            height: $space-stack-xl;
+            position: absolute;
+            left: 95%;
+            display: inline-block;
+            padding-bottom: calc(#{$space-stack-xl} + 4px);
+          }
         }
       }
     }
@@ -242,14 +253,12 @@
         &__list {
           margin-top: $space-stack-sm;
 
-          &:first-child
-          , &:last-child {
+          &:first-child,
+          &:last-child {
             margin-right: 0;
             margin-left: 0;
           }
-
         }
-
       }
 
       &__picker {
@@ -263,4 +272,3 @@
     }
   }
 }
-

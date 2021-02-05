@@ -43,7 +43,7 @@ class Survivor extends Component {
             <Card className="survivor__analytics__picker survivor__analytics__card">
               <div className="survivor__analytics__picker__section most__picked">
                 <h4 className="survivor__analytics__picker__section__title">
-                  Healthy survivors
+                  Healthy
                 </h4>
                 <div className="survivor__analytics__picker__section__segmentation">
                   <div className="survivor__analytics__picker__section__segmentation__avatar__container">
@@ -59,7 +59,7 @@ class Survivor extends Component {
               </div>
               <div className="survivor__analytics__picker__section">
                 <h4 className="survivor__analytics__picker__section__title">
-                  Infected survivors
+                  Infected
                 </h4>
                 <div className="survivor__analytics__picker__section__segmentation">
                   <div className="survivor__analytics__picker__section__segmentation__avatar__container less">
