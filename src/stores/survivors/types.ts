@@ -9,6 +9,8 @@ export enum ActionTypes {
   UPDATE_SURVIVOR_RESOLVE = 'UPDATE_SURVIVOR_RESOLVE',
 
   EDIT_SURVIVOR = 'EDIT_SURVIVOR',
+  END_EDIT_SURVIVOR = 'END_EDIT_SURVIVOR',
+
   SELECT_SURVIVOR = 'SELECT_SURVIVOR',
   DESELECT_SURVIVOR = 'DESELECT_SURVIVOR',
 
@@ -37,4 +39,8 @@ export interface SurvivorState {
   selectedSurvivor: any;
   editingSurvivor: any;
   isEditing: boolean;
+  percents: {
+    healthy: any;
+    infected: any;
+  };
 }

@@ -224,6 +224,10 @@
             left: 95%;
             display: inline-block;
             padding-bottom: calc(#{$space-stack-xl} + 4px);
+
+            &.hint {
+              border-bottom: 1px solid $neutral-white;
+            }
           }
         }
       }

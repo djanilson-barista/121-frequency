@@ -125,6 +125,7 @@ const _SurvivorForm = (props: any) => {
                   type="link"
                   size="small"
                   className="survivor__form__card__title__close"
+                  onClick={props.endEditSurvivor}
                 >
                   <CloseIcon />
                 </Button>

@@ -27,6 +27,7 @@ interface DispatchProps {
 
 interface StateProps {
   survivors: SurvivorTypes.Survivor[];
+  percents: any;
   selectedSurvivor: SurvivorTypes.Survivor;
 }
 
@@ -40,6 +41,7 @@ class Survivor extends Component<SurvivorProps> {
   render() {
     const {
       survivors,
+      percents,
       selectedSurvivor,
       editSurvivor,
       removeSurvivor,
@@ -47,7 +49,7 @@ class Survivor extends Component<SurvivorProps> {
       selectSurvivor,
       deselectSurvivor,
     } = this.props;
-    const hasSelected = Object.keys(selectedSurvivor).length;
+    const hasSelected = Object.keys(selectedSurvivor || {}).length;
 
     return (
       <>
@@ -109,8 +111,12 @@ class Survivor extends Component<SurvivorProps> {
                       src={healthyIco}
                     />
                   </div>
-                  <strong className="survivor__analytics__picker__section__segmentation__percent">
-                    75%
+                  <strong
+                    className={`survivor__analytics__picker__section__segmentation__percent
+                      ${percents.infected < percents.healthy ? 'hint' : ''}
+                  `}
+                  >
+                    {percents.healthy}%
                   </strong>
                 </div>
               </div>
@@ -125,8 +131,12 @@ class Survivor extends Component<SurvivorProps> {
                       src={infectedIco}
                     />
                   </div>
-                  <strong className="survivor__analytics__picker__section__segmentation__percent">
-                    25%
+                  <strong
+                    className={`survivor__analytics__picker__section__segmentation__percent
+                      ${percents.infected > percents.healthy ? 'hint' : ''}
+                    `}
+                  >
+                    {percents.infected}%
                   </strong>
                 </div>
               </div>
@@ -140,6 +150,7 @@ class Survivor extends Component<SurvivorProps> {
 
 const mapStateToProps = (state: AppState) => ({
   survivors: state.survivorState.data,
+  percents: state.survivorState.percents,
   selectedSurvivor: state.survivorState.selectedSurvivor,
 });
 

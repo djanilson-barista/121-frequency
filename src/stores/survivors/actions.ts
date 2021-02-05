@@ -22,6 +22,7 @@ export const deselectSurvivor = () => action(ActionTypes.DESELECT_SURVIVOR);
 
 export const editSurvivor = (data: any) =>
   action(ActionTypes.EDIT_SURVIVOR, data);
+export const endEditSurvivor = () => action(ActionTypes.END_EDIT_SURVIVOR);
 
 export const updateSurvivor = (data: Survivor) =>
   action(ActionTypes.UPDATE_SURVIVOR, data);

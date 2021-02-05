@@ -9,6 +9,20 @@ const initialState: SurvivorState = {
   editingSurvivor: {},
   selectedSurvivor: {},
   isEditing: false,
+  percents: {
+    healthy: '0',
+    infected: '0',
+  },
+};
+
+const getPercent = (data: Survivor[]) => {
+  const size = data.length;
+  const sizeHealthy = data.filter(item => !item.infected).length;
+
+  return {
+    healthy: ((sizeHealthy * 100) / size).toFixed(2),
+    infected: (100 - (sizeHealthy * 100) / size).toFixed(2),
+  };
 };
 
 export const survivorReducer: Reducer<SurvivorState> = (
@@ -20,6 +34,7 @@ export const survivorReducer: Reducer<SurvivorState> = (
       return {
         ...state,
         data: [].concat(payload),
+        percents: getPercent(payload),
       };
 
     case ActionTypes.CREATE_SURVIVOR_RESOLVE:
@@ -28,6 +43,7 @@ export const survivorReducer: Reducer<SurvivorState> = (
       return {
         ...state,
         data: payload,
+        percents: getPercent(payload),
       };
 
     case ActionTypes.DESELECT_SURVIVOR:
@@ -44,6 +60,12 @@ export const survivorReducer: Reducer<SurvivorState> = (
 
       return newState;
 
+    case ActionTypes.END_EDIT_SURVIVOR:
+      return {
+        ...state,
+        isEditing: false,
+        editingSurvivor: {},
+      };
     case ActionTypes.EDIT_SURVIVOR:
       return {
         ...state,
@@ -57,6 +79,7 @@ export const survivorReducer: Reducer<SurvivorState> = (
       return {
         ...state,
         data: payload,
+        percents: getPercent(payload),
         isEditing: false,
         editingSurvivor: {},
       };

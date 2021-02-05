@@ -142,6 +142,7 @@ const Table = (props: any) => {
     <>
       <AntTable
         {...props}
+        pagination={{ defaultPageSize: 8 }}
         dataSource={createDataSource(dataSource)}
         columns={columns}
         onRow={row => ({ onClick: () => onRowSelect(row.key) })}

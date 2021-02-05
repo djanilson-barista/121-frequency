@@ -66,6 +66,7 @@ export function* update({ payload }: any) {
  */
 export function* remove({ payload }: any) {
   const survivors = yield localStorageAPI.getItem('survivors');
+
   const newSurvivors = survivors.filter(
     (survivor: Survivor) => survivor.id !== payload,
   );
