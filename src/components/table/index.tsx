@@ -1,66 +1,105 @@
 import React from 'react';
-import { Table as AntTable, Button, Tooltip, Tag } from 'antd';
-import { DeleteIcon, EditIcon, EyeIcon } from '../Icons';
+import { Table as AntTable, Button, Tag, Dropdown, Menu } from 'antd';
+import {
+  ArrowDropDownIcon,
+  DeleteIcon,
+  EditIcon,
+  ShieldTickIcon,
+  ShieldAlertIcon,
+} from '../Icons';
 import { Link } from 'react-router-dom';
 
 const Table = (props: any) => {
+  const { dataSource, toggleInfected, onRowSelect } = props;
+
+  const menu = (record: any) => (
+    <>
+      <Menu>
+        {!record.infected && (
+          <Menu.Item
+            danger
+            key={record.key + '1'}
+            icon={<ShieldAlertIcon size="18" />}
+            onClick={() => toggleInfected(record.key)}
+          >
+            Mark as Infected
+          </Menu.Item>
+        )}
+        {record.infected && (
+          <Menu.Item
+            key={record.key + '1'}
+            style={{ color: 'dodgerblue' }}
+            icon={<ShieldTickIcon size="18" />}
+            onClick={() => toggleInfected(record.key)}
+          >
+            Mark as not infected
+          </Menu.Item>
+        )}
+        <Menu.Item
+          onClick={() => props.edit(record)}
+          key={record.key + '2'}
+          icon={<EditIcon size="18" />}
+        >
+          <Link to="/survivorForm">Edit</Link>
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => props.remove(record)}
+          key={record.key + '4'}
+          icon={<DeleteIcon size="18" />}
+        >
+          Delete
+        </Menu.Item>
+      </Menu>
+    </>
+  );
+
   const buttonsTable = (text: string, record: any, index: any) => {
+    const { infected, injured, canWork } = record;
+    const isHealthy = !infected && !injured && canWork;
+    const isInjured = infected || injured;
     return (
       <div
         className="row__content"
-        style={{ display: 'flex', justifyContent: 'space-between' }}
+        style={{
+          display: 'grid',
+          alignItems: 'center',
+          gridTemplateColumns: 'auto 30%',
+          width: '100%',
+        }}
       >
-        <span>{text}</span>
+        <div>
+          {isHealthy && <Tag color="lime">healthy</Tag>}
+          {isInjured && <Tag color="purple">injured</Tag>}
+          {canWork && <Tag color="blue">can work</Tag>}
+        </div>
         <div className="row__content__actions">
-          <Tooltip title="Delete">
-            <Button
-              type="link"
-              icon={<DeleteIcon size="18" />}
-              size="small"
-              onClick={() => props.remove(record)}
-            ></Button>
-          </Tooltip>
-          <Tooltip title="Edit">
-            <Link to="/survivorForm">
-              <Button
-                type="link"
-                icon={<EditIcon size="18" />}
-                size="small"
-                onClick={() => props.edit(record)}
-              ></Button>
-            </Link>
-          </Tooltip>
-          <Tooltip title="See more">
-            <Link to="/survivorForm">
-              <Button
-                type="link"
-                icon={<EyeIcon size="18" />}
-                size="small"
-                onClick={() => props.edit(record)}
-              ></Button>
-            </Link>
-          </Tooltip>
+          <Dropdown overlay={menu(record)}>
+            <Button type="link">
+              Actions <ArrowDropDownIcon size="18" />
+            </Button>
+          </Dropdown>
         </div>
       </div>
     );
   };
 
   const renderInfected = (text: string, record: any, index: any) => {
-    return <Tag color="default">{text}</Tag>;
+    return (
+      <Tag color={record.infected ? 'red' : 'default'}>
+        {record.infected ? 'Yes' : 'No'}
+      </Tag>
+    );
   };
 
-  const renderInfo = (text: string, record: any, index: any) => {
-    const { infected, injured, canWork } = record;
-    const isHealthy = !infected && !injured && canWork;
-    const isInjured = infected || injured;
-
-    return (
-      <>
-        {isHealthy && <Tag color="lime">healthy</Tag>}
-        {isInjured && <Tag color="purple">injured</Tag>}
-        {canWork && <Tag color="blue">can work</Tag>}
-      </>
-    );
+  const createDataSource = (data: Array<any>) => {
+    return data.map(({ id, name, age, infected, injured, canWork }) => ({
+      key: id,
+      name,
+      age,
+      infected,
+      injured,
+      canWork,
+    }));
   };
 
   const columns = [
@@ -70,27 +109,21 @@ const Table = (props: any) => {
       key: 'name',
       sorter: (a: any, b: any) => a.name.localeCompare(b.name),
       sortDirections: ['ascend', 'descend'],
+      width: '30%',
     },
     {
       title: 'Age',
       dataIndex: 'age',
       key: 'age',
-      render: buttonsTable,
+      width: '62px',
       sorter: (a: any, b: any) => a.age.localeCompare(b.age),
-      sortDirections: ['ascend', 'descend'],
-    },
-    {
-      title: 'BT',
-      dataIndex: 'bloodType',
-      key: 'bloodType',
-      render: (text: string, r: any, idx: any) => <Tag color="red">{text}</Tag>,
-      sorter: (a: any, b: any) => a.bloodType.localeCompare(b.bloodType),
       sortDirections: ['ascend', 'descend'],
     },
     {
       title: 'Infected',
       dataIndex: 'infected',
       key: 'infected',
+      width: '110px',
       render: renderInfected,
       sorter: (a: any, b: any) => a.infected - b.infected,
       sortDirections: ['ascend', 'descend'],
@@ -99,13 +132,20 @@ const Table = (props: any) => {
       title: 'Info',
       dataIndex: 'info',
       key: 'info',
-      render: renderInfo,
+      width: '40%',
+      // render: renderInfo,
+      render: buttonsTable,
     },
   ];
 
   return (
     <>
-      <AntTable {...props} dataSource={props.dataSource} columns={columns} />
+      <AntTable
+        {...props}
+        dataSource={createDataSource(dataSource)}
+        columns={columns}
+        onRow={row => ({ onClick: () => onRowSelect(row.key) })}
+      />
     </>
   );
 };

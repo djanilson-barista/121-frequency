@@ -4,6 +4,7 @@ import {
   createSurvivorResolve,
   fetchSurvivor,
   removeSurvivorResolve,
+  toggleInfectedSurvivorResolve,
   updateSurvivorResolve,
 } from './actions';
 import { ActionTypes, Survivor } from './types';
@@ -73,11 +74,22 @@ export function* remove({ payload }: any) {
   return yield put(removeSurvivorResolve(newSurvivors));
 }
 
+export function* toggleInfected({ payload }: any) {
+  const survivors: Survivor[] = yield localStorageAPI.getItem('survivors');
+  const survivorIdx = survivors.findIndex(item => item.id === payload);
+
+  survivors[survivorIdx].infected = !survivors[survivorIdx].infected;
+  yield setSurvivors(survivors);
+
+  return yield put(toggleInfectedSurvivorResolve(survivors));
+}
+
 export default function* SurvivorSagas() {
   return yield all([
     takeEvery(ActionTypes.INIT_APP, fetch),
     takeEvery(ActionTypes.REMOVE_SURVIVOR, remove),
     takeEvery(ActionTypes.CREATE_SURVIVOR, create),
     takeEvery(ActionTypes.UPDATE_SURVIVOR, update),
+    takeEvery(ActionTypes.TOGGLE_INFECTED_SURVIVOR_REQUEST, toggleInfected),
   ]);
 }

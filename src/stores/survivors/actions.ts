@@ -10,6 +10,16 @@ export const createSurvivor = (data: Survivor) =>
 export const createSurvivorResolve = (data: Survivor[]) =>
   action(ActionTypes.CREATE_SURVIVOR_RESOLVE, data);
 
+export const toggleInfectedSurvivor = (idItem: string) =>
+  action(ActionTypes.TOGGLE_INFECTED_SURVIVOR_REQUEST, idItem);
+export const toggleInfectedSurvivorResolve = (data: Survivor[]) =>
+  action(ActionTypes.TOGGLE_INFECTED_SURVIVOR_RESOLVE, data);
+
+export const selectSurvivor = (data: string) =>
+  action(ActionTypes.SELECT_SURVIVOR, data);
+
+export const deselectSurvivor = () => action(ActionTypes.DESELECT_SURVIVOR);
+
 export const editSurvivor = (data: any) =>
   action(ActionTypes.EDIT_SURVIVOR, data);
 

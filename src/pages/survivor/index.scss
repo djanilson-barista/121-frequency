@@ -80,7 +80,7 @@
         }
       }
       &:hover > td {
-        background-color: $dark-pink !important;
+        background-color: #{$color-platinum}55 !important;
         font-weight: bolder;
         color: $primary-color;
         cursor: pointer;
