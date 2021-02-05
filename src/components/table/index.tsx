@@ -1,16 +1,31 @@
-import React from 'react';
-import { Table as AntTable, Button, Tag, Dropdown, Menu } from 'antd';
+import React, { useState } from 'react';
+import Highlighter from 'react-highlight-words';
+import {
+  Table as AntTable,
+  Button,
+  Tag,
+  Dropdown,
+  Menu,
+  Input,
+  Space,
+} from 'antd';
 import {
   ArrowDropDownIcon,
   DeleteIcon,
   EditIcon,
   ShieldTickIcon,
   ShieldAlertIcon,
+  SearchIcon,
 } from '../Icons';
 import { Link } from 'react-router-dom';
 
+export interface Props {}
+
 const Table = (props: any) => {
   const { dataSource, toggleInfected, onRowSelect } = props;
+  const [searchText, setSearchText] = useState<any>('');
+  const [searchedColumn, setSearchColumn] = useState<any>();
+  let searchInput: any;
 
   const menu = (record: any) => (
     <>
@@ -102,6 +117,85 @@ const Table = (props: any) => {
     }));
   };
 
+  const handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
+    confirm();
+    setSearchColumn(dataIndex);
+    setSearchText(selectedKeys[0]);
+  };
+
+  const getColumnSearchProps = (dataIndex: any) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+    }: any) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => (searchInput = node)}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={e =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ width: 188, marginBottom: 8, display: 'block' }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Search
+          </Button>
+          <Button
+            onClick={() => {
+              setSearchText('');
+              clearFilters();
+            }}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Reset
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: (filtered: any) => (
+      <span style={{ display: 'flex', height: '100%', alignItems: 'center' }}>
+        <SearchIcon
+          className="batman"
+          style={{ color: filtered ? '#1890ff' : undefined }}
+        />
+      </span>
+    ),
+    onFilter: (value: any, record: any) =>
+      record[dataIndex]
+        ? record[dataIndex]
+            .toString()
+            .toLowerCase()
+            .includes(value.toLowerCase())
+        : '',
+    onFilterDropdownVisibleChange: (visible: any) => {
+      if (visible) {
+        setTimeout(() => searchInput.select(), 100);
+      }
+    },
+    render: (text: any) =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ''}
+        />
+      ) : (
+        text
+      ),
+  });
+
   const columns = [
     {
       title: 'Name',
@@ -110,6 +204,7 @@ const Table = (props: any) => {
       sorter: (a: any, b: any) => a.name.localeCompare(b.name),
       sortDirections: ['ascend', 'descend'],
       width: '30%',
+      ...getColumnSearchProps('name'),
     },
     {
       title: 'Age',
@@ -133,7 +228,6 @@ const Table = (props: any) => {
       dataIndex: 'info',
       key: 'info',
       width: '40%',
-      // render: renderInfo,
       render: buttonsTable,
     },
   ];

@@ -8,6 +8,7 @@ import ShareIcon from 'mdi-react/ShareIcon';
 import ShieldAlertIcon from 'mdi-react/ShieldAlertIcon';
 import ShieldTickIcon from 'mdi-react/ShieldTickIcon';
 import BloodIcon from 'mdi-react/BloodIcon';
+import SearchIcon from 'mdi-react/SearchIcon';
 
 export {
   AddIcon,
@@ -20,4 +21,5 @@ export {
   ShieldAlertIcon,
   BloodIcon,
   ShieldTickIcon,
+  SearchIcon,
 };

@@ -46,8 +46,6 @@ export function* fetch() {
     return yield put(fetchSurvivor(mockData));
   }
 
-  console.log('ss');
-
   return yield put(fetchSurvivor(survivors));
 }
 
